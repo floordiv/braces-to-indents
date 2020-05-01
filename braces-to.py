@@ -5,7 +5,7 @@ tab = '    '
 replace_backbracket_to = ' '
 
 
-def remove_braces_from_file(file):
+def remove_braces_from_file(file, suffix='compiled', connector='.'):
     braces = 0
 
     nobracessource = ''
@@ -54,15 +54,19 @@ def remove_braces_from_file(file):
 
     try:
         new_filename = file.split('.')
-        new_filename.insert(-1, 'braceless')
+        new_filename = '.'.join(new_filename[:-1]) + connector + suffix + '.py'  # add suffix before .py extension
+        # new_filename.insert(-1, suffix)
 
-        with open('.'.join(new_filename), 'w') as modified_file:
+        with open(new_filename, 'w') as modified_file:
             if not nobracessource.endswith('\n'): nobracessource += '\n'    # PEP8: file should end with a newline
             modified_file.write(nobracessource)
 
-        print('REMOVED BRACES:', file)
+        print('[COMPILED]', file, '-->', new_filename)
+
+        return new_filename
     except PermissionError:
         print('ERROR: Permission denied to write a modified source. Please, run me with a sudo or smth like that')
+        sys.exit()
 
 
 if __name__ == '__main__':
