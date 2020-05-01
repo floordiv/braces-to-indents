@@ -62,7 +62,7 @@ def remove_braces_from_file(file):
 
         print('REMOVED BRACES:', file)
     except PermissionError:
-        print('ERROR: Permission denied to write modified source. Please, run me with sudo or smth like that')
+        print('ERROR: Permission denied to write a modified source. Please, run me with a sudo or smth like that')
 
 
 if __name__ == '__main__':
