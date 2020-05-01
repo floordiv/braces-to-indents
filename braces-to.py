@@ -65,7 +65,7 @@ def remove_braces_from_file(file, suffix='compiled', connector='.'):
 
         return new_filename
     except PermissionError:
-        print('ERROR: Permission denied to write a modified source. Please, run me with a sudo or smth like that')
+        print('[ERROR] Permission denied to write a modified source. Please, run me with a sudo or smth like that')
         sys.exit()
 
 
@@ -73,7 +73,7 @@ if __name__ == '__main__':
     files = sys.argv[1:]
 
     if len(files) == 0:
-        print('USAGE: python3 braces-to.py <files>')
+        print('[USAGE] python3 braces-to.py <files>')
         sys.exit()
 
     for file in files:
